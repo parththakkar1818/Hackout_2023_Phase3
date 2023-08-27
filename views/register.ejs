@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("rp9.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .glass-form {
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white background */
+            border-radius: 15px;
+            backdrop-filter: blur(10px); /* Glass-like blur effect */
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top:-100px;
+        }
+
+        .glass-form input,
+        .glass-form button {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for form elements */
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .glass-form input:focus,
+        .glass-form button:hover {
+            background-color: rgba(255, 255, 255, 1); /* Fully opaque white background on focus/hover */
+        }
+
+
+        .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+          margin-top:10px;
+    }
+
+    /* Style for the checkbox input */
+    .checkbox-container input[type="checkbox"] {
+        appearance: none; /* Remove default styling */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 4px;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    /* Style for the checkbox label */
+    .checkbox-container label {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    /* Style for the checkbox input when checked */
+    .checkbox-container input[type="checkbox"]:checked {
+        background-color: #60a5fa; /* Change to your desired color */
+        border-color: #60a5fa;
+    }
+    </style>
+</head>
+<body>
+    <div class="glass-form">
+        <h1 class="text-2xl text-white font-semibold mb-4">Register</h1>
+        <form action="/register" method="POST">
+            <input type="text" name="username" placeholder="Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="passwordconfirm" placeholder="Confirm your Password">
+           
+            <!-- <input type="checkbox" name="ishost"><label>Register as Host</label> -->
+          <input type="checkbox" name="ishost" id="ishost" class="hidden">
+          <div class="checkbox-container">
+              <input type="checkbox" name="ishost" id="styled-ishost">
+              <label for="styled-ishost">Register as Host</label>
+          </div>
+           <p id="host-description" style="display: none; color: black;">As a host, you can create events.</p>
+  
+          <p style="color:red"> <%= passwordAnswer %> </p>
+            
+            <button type="submit" >Register</button>
+        </form>
+        <p class="text-sm mt-4">Already have an account? <a href="/login" class="text-white hover:underline">Login</a></p>
+    </div>
+
+    <script>
+      const hostCheckbox = document.getElementById('styled-ishost');
+        const hostDescription = document.getElementById('host-description');
+
+        hostCheckbox.addEventListener('change', () => {
+            if (hostCheckbox.checked) {
+                hostDescription.style.display = 'block';
+            } else {
+                hostDescription.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

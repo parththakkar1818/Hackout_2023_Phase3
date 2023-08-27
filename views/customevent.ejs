@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= selectedEvent.title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="home.css"> -->
+    <style>
+        
+        .container {
+          /* background-color: #374151; */
+          position: relative;
+            /* top: 4rem; */
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem;
+            /* color: #3182ce; */
+            text-align: justify;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #374151;
+            /* text-align:justify; */
+        }
+
+        /* Create a grid layout with two columns */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 300px; /* 1fr for left column, 300px for right column */
+            gap: 2rem;
+        }
+
+        /* Styling for the left column */
+        .left-column img {
+          /* top: 4rem; */
+            max-width: 100%;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the right pane */
+        .right-pane {
+            position: fixed;
+            width:270px;
+            /* top: 4rem;  */
+            right: 7rem;
+            /* height: 100vh; */
+            padding: 1rem;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-pane p {
+            margin-bottom: 1rem;
+            color: #5f5f5f;
+        }
+
+        .right-pane strong {
+          color: #000000;
+            font-weight: bold;
+        }
+        .right-pane i{
+          color: rgb(0, 0, 0);
+          border: 1px solid #000000;
+          border-radius: 5px;
+          padding: 2px;
+
+        }
+        /* Styling for the registration link */
+        .reg_here {
+            /* padding: 5px; */
+            /* background-color: #b1b1b1; */
+            color: #ff0000;
+            border-radius: 5px;
+            /* width: fit-content; */
+            /* text-align: center; */
+        }
+
+        .reg_here a {
+        color: #3182ce;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .reg_here a:hover {
+        text-decoration: underline;
+    }
+
+        /* Styling for the back button */
+        #back_btn {
+        color: #3182ce;
+        text-decoration: none;
+        transition: color 0.3s;
+        display: inline-block;
+        margin-top: 1rem;
+    }
+
+    #back_btn:hover {
+        color: black;
+    }
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .delete-btn,
+    .update-btn {
+        font-size: 14px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        display: flex;
+        align-items: center;
+    }
+
+    .delete-btn {
+        background-color: #ff5050;
+        color: white;
+    }
+
+    .update-btn {
+        background-color: #4caf50;
+        color: #000;
+    }
+
+    .delete-btn:hover,
+    .update-btn:hover {
+        background-color: #e60000;
+    }
+
+    .joinnow {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+    .joinnow:hover {
+        background-color: #0056b3;
+    }
+
+    .registered {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+    .registered:hover {
+        /* background-color: #0056b3; */
+        cursor: not-allowed;
+    }
+
+
+    .regbutton {
+        background-color: #0d80fb;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+    .regbutton:hover {
+        background-color: #0251a7;
+
+    }
+    .regbutton i {
+        color: white;
+        border-color: white;
+    }
+
+
+    /* Icon styles */
+    .delete-btn i,
+    .update-btn i {
+        margin-right: 6px;
+    }
+      hr{
+          border-color: #000000;
+        }
+        /* Add the color styles you want */
+.registered {
+    background-color: #4caf50;
+    color: #ffffff;
+    /* Add any other styles you need */
+}
+
+      @media (max-width: 768px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        .right-pane {
+            position: static;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .left-column img {
+            max-width: 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <!-- <h1 class="text-2xl font-bold mb-4"><%= selectedEvent.title %></h1> -->
+        <div class="grid-container">
+            <!-- Left Column -->
+            <div class="left-column">
+                <img src="<%= selectedEvent.imageurl %>" alt="<%= selectedEvent.title %>" class="w-full max-w-md mx-auto mb-4">
+                <p class="mb-4"><strong>Description</strong></p>
+                <hr>
+                <p><%= selectedEvent.description %></p>
+                <br>
+                <p class="mb-4"><strong>Rules</strong></p>
+                <hr>
+                <p><%= selectedEvent.rules %></p>
+            </div>
+
+           <!-- Right Pane -->
+          <div class="right-pane">
+                <h1 class="text-3xl font-bold mb-4 text-black"><%= selectedEvent.title %></h1>
+                <hr>
+                <br>
+                <p><strong><i class="far fa-calendar"></i> Date:</strong> <%= selectedEvent.date.toDateString() %></p>
+                <p><strong><i class="far fa-clock"></i> Time:</strong> <%= selectedEvent.time %></p>
+                
+                <% if (userId !== selectedEvent.createdBy.toString()) { %>
+                  <% if (isregistered === 1) { %>
+                      <button class="registered" data-event-id="<%= selectedEvent._id %>">
+                          <i class="fas fa-user-edit"></i> Registered
+                      </button>
+                      <form action="/joinevent" method="post"><button class="joinnow">Join Now</button></form>
+                  <% } else { %>
+                      <form action="/regevents/<%= userId %>/<%= selectedEvent._id %>" method="post">
+                          <button class="regbutton" data-event-id="<%= selectedEvent._id %>">
+                              <i class="fas fa-user-edit"></i> Register
+                          </button>
+                      </form>
+                  <% } %>
+                  
+
+              <% } %>
+
+
+
+              <div class="action-buttons">
+                
+                  <% if (userId === selectedEvent.createdBy.toString()) { %>
+                      <button class="delete-btn" data-event-id="<%= selectedEvent._id %>">
+                          <i class="fas fa-trash"></i>Delete
+                      </button>
+                      <form method="get" action="/update/<%= selectedEvent._id %>">
+                          <button class="update-btn" data-event-id="<%= selectedEvent._id %>">
+                              <i class="fas fa-edit"></i>Update
+                          </button>
+                      </form>
+                  <% } %>
+              </div>
+            </div>
+        </div>
+
+        <a href="/" class="text-blue-500 hover:underline" id="back_btn">Back to Event Data</a>
+    </div>
+
+    <!-- Include Tailwind CSS and any additional scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <script src="web.js"></script>
+    
+    
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const deleteButtons = document.querySelectorAll(".delete-btn");
+      
+          deleteButtons.forEach((button) => {
+            button.addEventListener("click", async (event) => {
+              const eventId = button.getAttribute("data-event-id");
+              
+              // Create a password input field for entering the access key
+              const passwordInput = document.createElement("input");
+              passwordInput.type = "password";
+              passwordInput.placeholder = "Enter the access key";
+              
+              const accessKey = prompt("Enter the access key:", ""); // Empty string prevents default text
+              passwordInput.value = accessKey; // Set the entered value to the input field
+              
+              if (accessKey === "rareasprv") {
+                const confirmed = confirm("Are you sure you want to delete this event?");
+                
+                if (confirmed) {
+                  try {
+                    const response = await fetch(`/delete/${eventId}`, {
+                      method: "POST",
+                    });
+      
+                    if (response.ok) {
+                      window.location.href = "/showdata"; // Redirect to the event list page after successful deletion
+                    } else {
+                      console.error("Delete request failed");
+                    }
+                  } catch (error) {
+                    console.error("Error during delete request:", error);
+                  }
+                }
+              } else {
+                alert("Access key is incorrect.");
+              }
+            });
+          });
+        });
+      </script>
+      
+</body>
+</html>

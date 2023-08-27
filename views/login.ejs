@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("rp9.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .glass-form {
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+            border-radius: 15px;
+            backdrop-filter: blur(8px); /* Glass-like blur effect */
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          margin-top:-100px;
+        }
+
+        .glass-form input,
+        .glass-form button {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for form elements */
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .glass-form input:focus,
+        .glass-form button:hover {
+            background-color: rgba(255, 255, 255, 1); /* Fully opaque white background on focus/hover */
+        }
+        .left {
+        flex: 1; /* Allow the left div to expand and take available space */
+        padding: 20px; /* Add some padding for spacing */
+        /* display: flex;
+        flex-direction: column;
+        justify-content:left;
+        align-items: flex-start; */
+        left:0%;
+        }
+    
+        .left p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+  <div style="display: flex;">
+        <div class="glass-form">
+            <h1 class="text-2xl font-semibold mb-4 text-white">Login</h1>
+            <form name="loginForm" action="/login" method="POST">
+                <input type="text" name="username" placeholder="Name">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+            <p class="text-sm mt-4">Don't have an account? <a href="/register" class="text-white hover:underline">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>
